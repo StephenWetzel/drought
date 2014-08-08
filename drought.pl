@@ -13,12 +13,13 @@ use autodie;
 my $time = time;
 
 my $testing = 0; #set to 1 to prevent actual downloading, 0 normally
+#20070731_ca_date.png
+#here, 20070731 is the date, ca is the stateId, and date is the type
+
 my $stateId = "conus"; #set this = "" and it will take the id from the command line
-my $type = "date"; #20070731_ca_date.png
+my $type = "date"; #date, none, text
 my $baseUrl = "http://droughtmonitor.unl.edu/data/pngs/"; #base url of the png files
-my $delay = 3;
-
-
+my $delay = 3; #gif delay
 
 
 if (!$stateId) {$stateId = $ARGV[0];} #grab id from command line if passed
@@ -47,7 +48,7 @@ foreach $thisLine (@fileArray)
 }
 
 foreach my $date (@dates)
-{
+{#go through dates, download the pngs
 	#http://droughtmonitor.unl.edu/data/pngs/20070731/20070731_ca_date.png
 	my $url = "$baseUrl$date/${date}_${stateId}_$type.png";
 	
@@ -57,6 +58,7 @@ foreach my $date (@dates)
 	
 }
 
+#create gif with ImageMagick
 `convert -delay $delay -loop 0 $dir*.png $stateId.gif`;
 
 
