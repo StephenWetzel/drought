@@ -1,6 +1,5 @@
 #!/usr/bin/perl
 #Drought GIF creator by Stephen Wetzel Aug 08 2014
-#Grabs imdb ratings and generate graphs
 #requires lynx and ImageMagick
 #http://droughtmonitor.unl.edu/
 
